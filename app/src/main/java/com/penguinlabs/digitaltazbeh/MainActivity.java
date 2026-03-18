@@ -3,6 +3,7 @@ package com.penguinlabs.digitaltazbeh;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,16 +47,27 @@ public class MainActivity extends AppCompatActivity {
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count = count - 1;
-                tv.setText("" + count);
+               if (count>0){
+                   count = count - 1;
+                   tv.setText("" + count);
+               }
+               else {
+                   count = 0;
+                   tv.setText("" + count);
+               }
             }
         });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count = 0;
-                tv.setText("" + count);
+                if (count>0){
+                    count = 0;
+                    tv.setText("" + count);
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Counter is already at zero", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
